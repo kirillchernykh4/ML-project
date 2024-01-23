@@ -1,0 +1,15 @@
+name: Review Sentiment
+
+docker_env:
+  image: mlflow-docker-environment:latest
+  environment:
+    - ["MLFLOW_TRACKING_URI", "http://web:5000"]
+    - ["MLFLOW_S3_ENDPOINT_URL", "http://minio:9000"]
+    - "AWS_ACCESS_KEY_ID"
+    - "AWS_SECRET_ACCESS_KEY" # too secret to set here, load from env instead
+
+
+entry_points:
+  main:
+    command: "/train.py"
+
